@@ -1,0 +1,10 @@
+.chat {
+    height: 400px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 20%;
+}
+
+.message-box {
+    width: 20%;
+}
