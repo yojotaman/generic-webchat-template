@@ -1,23 +1,55 @@
 $(function() {
     // socket iniciado
-    var socket = io()
+    const socket = io()
 
     // variables
-    var message = $('#chat-message')
-    var chat = $('#chat')
+    const message = $('#chat-message')
+    const chat = $('#chat')
+    const burbujabot = $('#burbbot')
+    const burbujauser = $('#burbuser')
+        //   const send_btn=$('#chat-message-btn')
 
     message.focus()
 
-    $('#message-box').submit(function(e) {
-        e.preventDefault()
-            // chat.append(message.val() + '<br/>');
-        socket.emit('mensaje-del-cliente', message.val())
-        message.val('')
 
+    $('#chat-message-btn').click(function(e) {
+        dato = message.val()
+            // console.log(dato);
+        crearBurbujauser(dato)
+        message.val('')
     })
 
-    socket.on('mensaje-del-servidor', (data) => {
-        // console.log(data);
-        chat.append(data + '<br/>')
+    $('#message-box').submit(function(e) {
+        e.preventDefault()
+        dato = message.val()
+            // console.log(dato);
+        crearBurbujauser(dato)
+        socket.emit('mensajeCliente', dato)
+        message.val('')
+    })
+
+
+
+    function crearBurbujabot(dato) {
+        chat.append(
+            `<div class="received_withd_msg">
+                  <p>${dato}</p>
+              </div>
+              <br/>`)
+    }
+
+
+    function crearBurbujauser(dato) {
+        chat.append(
+            `<div class="sent_msg">
+                  <p>${dato}</p>
+              </div>
+              <br/>`)
+    }
+
+
+    socket.on('mensajeServidor', (data) => {
+        console.log(data);
+        crearBurbujabot(data)
     })
 })

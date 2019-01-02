@@ -4,24 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat básico</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <!-- cuadro de mensajes de chat -->
-    <div id="chat" class="chat"></div>
 
-    <!-- controles del chat -->
-    <form id="message-box" class="message-box">
-        <input type="text" id="chat-message">
-        <input type="submit" value='Enviar'>
-    </form>
+    <div class="container">
+
+        <div class="mesgs">
+            <!-- elemtos del chat -->
+
+            <div class="msg_history" id="chat">
+                <div class="incoming_msg">
+                    <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" id="imagen"> </div>
+                    <div class="received_msg" id="burbbot">
+                        <!-- <div class="received_withd_msg" >
+                        <p> mensaje </p>                 
+                    </div> -->
+                    </div>
+
+                </div>
+                <div class="outgoing_msg">
+                    <div class="sent_msg" id="burbuser">
+                        <!-- <p> mensaje 2 </p> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- formulario -->
+            <div class="type_msg">
+                <form class="input_msg_write" id="message-box">
+                    <input id="chat-message" type="text" class="write_msg" placeholder="Type a message" />
+                    <button id="chat-message-btn" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src=" main.js"></script>
+    <!-- jquery permite obtener los id -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- socketio cdn-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" charset="utf-8"></script>
+    <script src="main.js"></script>
+
 </body>
 
 </html>

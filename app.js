@@ -6,7 +6,7 @@ const io = require('socket.io')
 
 const server = http.createServer(app)
 
-app.set('port', 3000)
+app.set('port', 3001)
 app.use(express.static(__dirname + '/public'))
 
 server.listen(app.get('port'), () => {
@@ -16,8 +16,8 @@ server.listen(app.get('port'), () => {
 var sockets = io.listen(server)
 sockets.on('connection', function(socket) {
     console.log('nuevo socket conectado');
-    socket.on('mensaje-del-cliente', (data) => {
-        // console.log(data);
-        sockets.emit('mensaje-del-servidor', data)
+    socket.on('mensajeCliente', (dato) => {
+        // console.log(dato);
+        sockets.emit('mensajeServidor', dato)
     })
 })
